@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>กระทู้เด็ดจุฬา</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="auth-modal" id="auth-modal">
+    <div class="auth-container">
+      <div class="auth-tabs">
+        <div class="auth-tab active" id="login-tab">เข้าสู่ระบบ</div>
+        <div class="auth-tab" id="register-tab">สมัครสมาชิก</div>
+      </div>
+
+      <!-- Login Form -->
+      <form class="auth-form" id="login-form">
+        <input type="text" placeholder="ชื่อผู้ใช้" required>
+        <input type="password" placeholder="รหัสผ่าน" required>
+        <button type="submit">เข้าสู่ระบบ</button>
+        <div class="auth-switch">
+          ยังไม่มีบัญชี? <a id="switch-to-register">สมัครสมาชิก</a>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form class="auth-form" id="register-form" style="display: none;">
+        <input type="text" placeholder="ชื่อผู้ใช้" required>
+        <input type="password" placeholder="รหัสผ่าน" required>
+        <input type="password" placeholder="ยืนยันรหัสผ่าน" required>
+        <button type="submit">สมัครสมาชิก</button>
+        <div class="auth-switch">
+          มีบัญชีแล้ว? <a id="switch-to-login">เข้าสู่ระบบ</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <header>
+    <h1><img src = "./resource/logoChula.png" width="30"> กระทู้เด็ดจุฬา</h1>
+    <p class="subtitle">พื้นที่แชร์เรื่องราวเด็ดๆของชาวจุฬาฯ</p>
+  </header>
+
+  <main>
+    <form id="create-post">
+      <textarea id="post-content" placeholder="อยากแบ่งปันอะไรเด็ดๆไหม..." rows="3"></textarea>
+      <div class="controls">
+        <button id="btn-post" type="submit">โพสต์เลย</button>
+      </div>
+      <p id="token-display" class="token"></p>
+    </form>
+
+    <section id="feed">
+        <section id="thread-view" style="display:none">
+      <button id="back-btn">← กลับหน้าแรก</button>
+      <div id="thread-content"></div>
+
+      <h3>พูดคุยต่อ</h3>
+      <textarea id="comment-text" placeholder="แสดงความคิดเห็น..." rows="2"></textarea>
+      <div class="controls">
+        <button id="btn-comment">ส่งความคิดเห็น</button>
+      </div>
+      <div id="comment-list"></div>
+    </section>
+
+      <h2>โพสต์ล่าสุด</h2>
+      <div id="post-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 fakbokChula | anonymous board project</p>
+  </footer>
+
+  <script type = "module" src="./script/main.js"></script>
+</body>
+</html>
