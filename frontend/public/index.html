@@ -7,14 +7,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="auth-modal" id="auth-modal">
+  <div class="auth-modal" id="auth-modal" style="display : none;">
     <div class="auth-container">
       <div class="auth-tabs">
         <div class="auth-tab active" id="login-tab">เข้าสู่ระบบ</div>
         <div class="auth-tab" id="register-tab">สมัครสมาชิก</div>
       </div>
 
-      <!-- Login Form -->
       <form class="auth-form" id="login-form">
         <input type="text" placeholder="ชื่อผู้ใช้" required>
         <input type="password" placeholder="รหัสผ่าน" required>
@@ -24,7 +23,6 @@
         </div>
       </form>
 
-      <!-- Register Form -->
       <form class="auth-form" id="register-form" style="display: none;">
         <input type="text" placeholder="ชื่อผู้ใช้" required>
         <input type="password" placeholder="รหัสผ่าน" required>
@@ -40,6 +38,10 @@
   <header>
     <h1><img src = "./resource/logoChula.png" width="30"> กระทู้เด็ดจุฬา</h1>
     <p class="subtitle">พื้นที่แชร์เรื่องราวเด็ดๆของชาวจุฬาฯ</p>
+    <div class="user-info">
+      <span id="token-display"></span>
+      <button id="logout-button" style="display: none;">ออกจากระบบ</button>
+    </div>
   </header>
 
   <main>
@@ -48,11 +50,10 @@
       <div class="controls">
         <button id="btn-post" type="submit">โพสต์เลย</button>
       </div>
-      <p id="token-display" class="token"></p>
     </form>
 
     <section id="feed">
-        <section id="thread-view" style="display:none">
+      <section id="thread-view" style="display:none">
       <button id="back-btn">← กลับหน้าแรก</button>
       <div id="thread-content"></div>
 
@@ -62,17 +63,32 @@
         <button id="btn-comment">ส่งความคิดเห็น</button>
       </div>
       <div id="comment-list"></div>
-    </section>
+      </section>
+      <div id="refresh-wrapper">
+      <button id="refresh-fab">Refresh</button>
+      </div>
+      
+      <h2 id="feed-title">โพสต์ล่าสุด🕑</h2>
 
-      <h2>โพสต์ล่าสุด</h2>
+      <div class="sort-controls">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+          <option value="date">Date</option>
+          <option value="likes">Likes</option>
+          <option value="mine">My post</option>
+        </select>
+      </div>
+
       <div id="post-list"></div>
+
     </section>
   </main>
 
   <footer>
-    <p>© 2025 fakbokChula | anonymous board project</p>
+    <p>© 2025 กระทู้เด็ดจุฬา | anonymous board project</p>
   </footer>
-
+  <script type = "module" src ="./script/auth.js"></script>
   <script type = "module" src="./script/main.js"></script>
+
 </body>
 </html>

@@ -1,6 +1,6 @@
 import "dotenv/config";
-import connectDB from "./config/db.js"; // ฟังก์ชันเชื่อม MongoDB
-import app from "./app.js";             // app = express()
+import connectDB from "./config/db.js"; 
+import app from "./app.js";             
 
 // Connect to MongoDB
 await connectDB();
@@ -14,9 +14,10 @@ process.on("uncaughtException", (err) => {
 });
 
 // Start server
+
 const PORT = 3222;
 const server = app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Backend Server ready at http://localhost:${PORT}`);
+  console.log(`Backend Server ready at http://34.229.225.156:${PORT}`);
 });
 
 // Handle unhandled promise rejections (async error)
