@@ -17,7 +17,7 @@ process.on("uncaughtException", (err) => {
 
 const PORT = 3222;
 const server = app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Backend Server ready at http://34.229.225.156:${PORT}`);
+  console.log(`Backend Server ready at http://localhost:${PORT}`);
 });
 
 // Handle unhandled promise rejections (async error)
