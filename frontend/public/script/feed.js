@@ -48,9 +48,7 @@ export function RenderFeed(posts) {
     });
 }
 
-/**
- * FetchandRenderFeed: ดึงข้อมูล, เก็บใน "ถัง", และสั่งแสดงผลครั้งแรก
- */
+
 export async function FetchandRenderFeed() {
     const postList = document.getElementById('post-list');
     try {
@@ -72,23 +70,17 @@ export function applyFilterAndRender(filter) {
     let filteredPosts = [...allPosts];
 
     if (filter === "likes") {
-        // กรองตาม Likes (b.likeCount - a.likeCount คือมากไปน้อย)
         filteredPosts.sort((a, b) => b.likeCount - a.likeCount);
     } else if (filter === "mine") {
-        // กรองเฉพาะโพสต์ของเรา
         filteredPosts = allPosts.filter(p => p.author && p.author._id === currentUserId);
-        // (โพสต์ของเราจะเรียงตามวันที่ล่าสุดโดยอัตโนมัติ)
+
         filteredPosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    } else { // 'date'
-        // กรองตาม Date (ค่าเริ่มต้น)
+    } else { 
         filteredPosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     }
-    // -------------------------
 
-    // บันทึกตัวเลือก filter ล่าสุด
     localStorage.setItem('chulaFilter', filter);
     
-    // สั่งแสดงผลโพสต์ที่กรอง/เรียงแล้ว
     RenderFeed(filteredPosts);
 }
 
@@ -102,7 +94,7 @@ export async function handlePost(){
         
         await createPost({ content: content });
         contentInput.value = ''; 
-        await FetchandRenderFeed(); // โหลดใหม่ทั้งหมด
+        await FetchandRenderFeed(); 
     } catch (error) {
         console.error('Error creating post:', error);
         alert(error.message);
@@ -115,16 +107,14 @@ export async function handleDelete(postId) {
   
   try {
     await deletePost(postId);
-    FetchandRenderFeed(); // โหลดใหม่ทั้งหมด
+    await FetchandRenderFeed();
   } catch (err) {
     console.error(err);
     alert('เกิดข้อผิดพลาด: ' + err.message);
   }
 }
 
-/**
- * handleLike: ไลค์/อัลไลค์, อัปเดต UI, และอัปเดต "ถัง"
- */
+
 export async function handleLike(postId) {
   if (!postId) return;
   
@@ -135,6 +125,7 @@ export async function handleLike(postId) {
     if (index !== -1) {
       allPosts[index] = updatedPost;
     }
+    
     const newLikeCount = updatedPost.likeCount;
     const currentUserId = getUserIdFromToken();
     const isLiked = updatedPost.likes.includes(currentUserId);

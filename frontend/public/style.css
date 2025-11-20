@@ -139,13 +139,13 @@ footer {
   background: #ffd1d8;
 }
 
-/*VV for delete*/
+
 
 .post-actions {
     display: flex;
     align-items: center;
-    padding-top: 5px; /* Adjust as needed */
-    padding-bottom: 5px; /* Adjust as needed */
+    padding-top: 5px; 
+    padding-bottom: 5px; 
 }
 
 
@@ -157,7 +157,7 @@ footer {
   margin-top: 0.6rem;
 }
 
-/* Auth Modal Styles */
+
 .auth-modal {
   position: fixed;
   top: 0;
@@ -277,15 +277,12 @@ font-size: 0.9rem;
 background: rgba(255, 255, 255, 0.4);
 }
 
-/* === Styles for Sorting Control === */
-/* นี่คือ .sort-controls ที่ถูกต้อง */
+
 .sort-controls {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  /* เราลบ margin-bottom และ justify-content ออกจากตรงนี้
-    เพราะ .feed-header จะจัดการแทน
-  */
+ 
 }
 
 .sort-controls label {
@@ -324,7 +321,7 @@ background: rgba(255, 255, 255, 0.4);
   box-shadow: 0 0 0 3px rgba(255,143,163,0.15); 
 }
 
-/* === Refresh Button (Static + Floating) === */
+
 #refresh-wrapper {
   display: flex;
   justify-content: center;
@@ -374,22 +371,18 @@ background: rgba(255, 255, 255, 0.4);
 }
 
 
-/* ▼▼▼ เพิ่มส่วนนี้เข้าไปใหม่ (หรือวางไว้ที่อื่นก็ได้) ▼▼▼ */
-/* === จัดการแถบหัวข้อ Feed (โพสต์ล่าสุด + จัดเรียง) === */
 .feed-header {
   display: flex;
-  justify-content: space-between; /* ดัน H2 ไปซ้าย, Sort ไปขวา */
-  align-items: center;          /* จัดให้อยู่กลางแนวตั้ง */
-  margin-bottom: 1.5rem;          /* ย้าย margin จาก .sort-controls มาไว้ที่นี่ */
+  justify-content: space-between; 
+  align-items: center;          
+  margin-bottom: 1.5rem;         
 }
 
 .feed-header h2 {
-  margin: 0; /* ลบ margin เดิมของ H2 */
+  margin: 0; 
 }
 
-/* === Skeleton Loading === */
 
-/* 1. ตัวโครงโพสต์ (กล่องหลัก) */
 .skeleton-post {
   background: #fff;
   border-radius: 16px;
@@ -398,27 +391,27 @@ background: rgba(255, 255, 255, 0.4);
   margin-bottom: 1rem;
 }
 
-/* 2. บรรทัดข้อความจำลอง */
+
 .skeleton-line {
-  height: 1.2rem; /* ความสูงของบรรทัด */
+  height: 1.2rem;
   border-radius: 8px;
   margin-bottom: 0.8rem;
   
-  /* 3. นี่คือส่วนที่ทำอนิเมชัน */
+
   background: linear-gradient(
     90deg,
-    #f0f0f0 25%, /* สีเทาจาง */
-    #e0e0e0 50%, /* สีเทาเข้มขึ้น (จุดที่สว่าง) */
+    #f0f0f0 25%, 
+    #e0e0e0 50%, 
     #f0f0f0 75%
   );
   background-size: 200% 100%;
-  animation: shimmer 1.5s infinite; /* เรียกใช้ @keyframes ด้านล่าง */
+  animation: shimmer 1.5s infinite;
 }
 
-/* 4. ตั้งค่าความกว้างให้ดูเหมือนจริง */
+
 .skeleton-line.short {
   width: 60%;
-  height: 0.8rem; /* บรรทัดสั้นๆ ทำให้เหมือนเป็นวันที่ */
+  height: 0.8rem; 
   opacity: 0.7;
 }
 
@@ -426,7 +419,7 @@ background: rgba(255, 255, 255, 0.4);
   width: 90%;
 }
 
-/* 5. อนิเมชัน "shimmer" (กระพริบเลื่อน) */
+
 @keyframes shimmer {
   0% {
     background-position: 200% 0;

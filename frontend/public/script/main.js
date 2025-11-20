@@ -1,12 +1,12 @@
-// ▼▼▼ (แก้ไข) import ให้ครบ ▼▼▼
+
 import { FetchandRenderFeed, handlePost , handleDelete, handleLike, applyFilterAndRender } from "./feed.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 1. แสดง Skeleton UI
+
   displaySkeletonLoaders(); 
 
-  // 3. โค้ดสร้างโพสต์ (เหมือนเดิม)
+
   const postContent = document.getElementById("post-content");
   const createPost = document.getElementById("create-post");
   const addPost = document.getElementById("btn-post");
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });  
 
-  // 5. โค้ดปุ่ม Refresh (เหมือนเดิม)
+
   const refreshFabButton = document.getElementById('refresh-fab');
   const refreshFabWrapper = document.getElementById('refresh-wrapper');
 
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // 6. ▼▼▼ (แก้ไข) โค้ด Filter (Sort) ▼▼▼
+
   const titleMappings = {
     'date': 'โพสต์ล่าสุด🕑',
     'likes': 'โพสต์เด็ด🔥',
@@ -98,27 +98,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const sortSelect = document.getElementById('sort-select');
   const feedTitle = document.getElementById('feed-title');
 
-  // (เพิ่ม) ตั้งค่าเริ่มต้นจาก localStorage
+
   const savedFilter = localStorage.getItem('chulaFilter') || 'date';
   sortSelect.value = savedFilter;
   feedTitle.textContent = titleMappings[savedFilter] || titleMappings['date'];
 
-  // (แก้ไข) เพิ่มการเรียก applyFilterAndRender
+
   if (sortSelect && feedTitle) {
       sortSelect.addEventListener('change', () => {
         const selectedValue = sortSelect.value;
         
-        // 1. เปลี่ยนชื่อหัวข้อ (เหมือนเดิม)
+
         feedTitle.textContent = titleMappings[selectedValue] || titleMappings['date'];
 
-        // 2. (สำคัญ) สั่งให้ feed.js เรียงลำดับและแสดงผลใหม่
         applyFilterAndRender(selectedValue);
       });
   }
 
 });
 
-// 7. ฟังก์ชัน Skeleton (เหมือนเดิม)
 function displaySkeletonLoaders() {
   const postList = document.getElementById('post-list');
   if (!postList) return; 

@@ -1,11 +1,11 @@
 import { BACKEND_URL } from "./config.js";
 
-// (Helper function to get token from Session Storage)
+
 export function getAuthToken() {
   return sessionStorage.getItem('authToken');
 }
 
-// (Helper function to get User ID from Token - feed.js NEEDS this)
+
 export function getUserIdFromToken() {
   const token = getAuthToken();
   if (!token) return null;
@@ -62,7 +62,7 @@ export async function userLogin(newUser) {
   const data = await response.json();
   
   if (data.token) {
-    // Your code uses sessionStorage, which is perfectly fine
+
     sessionStorage.setItem('authToken', data.token);
     sessionStorage.setItem('username', data.user.username);
     sessionStorage.setItem('userID', data.user._id);
@@ -116,8 +116,8 @@ export async function deletePost(postId) {
   return response.json();
 }
 
-// (Changed name to toggleLikePost and method to "PUT")
-export async function toggleLikePost(postId) { // <-- CHANGED name
+
+export async function toggleLikePost(postId) { 
   const token = getAuthToken();
   if (!token) {
     throw new Error("ไม่ได้ login");
